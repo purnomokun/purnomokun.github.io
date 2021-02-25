@@ -17,7 +17,7 @@
         } else {
             //install
             navigator.serviceWorker.register('/sw.js').then((reg) => {
-                console.log('serviceWorker berhasil didaftarkan');
+                console.log('serviceWorker berhasil didaftarkan Selamat Datang');
                 document.querySelector("#sw").innerHTML = 'berhasil';
             }).catch((err) => {
                 console.log('service worker gagal didaftarkan');
@@ -25,7 +25,7 @@
             });
         }
     </script>
-    Selamat Datang
+    
 </body>
 
 </html>
