@@ -1,0 +1,46 @@
+<html>
+    
+<head>
+    
+</head>
+<body>
+    token <p id="token"></p>
+    pesan <p id="pesan"></p>
+<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-messaging.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-analytics.js"></script>
+    <script>
+// Your web app's Firebase configuration
+var firebaseConfig = {
+    apiKey: "AIzaSyDJM8xbon9wZWtC2_qrMlSSjbR-0ZKqtGU",
+    authDomain: "pushbkd-aacd9.firebaseapp.com",
+    projectId: "pushbkd-aacd9",
+    storageBucket: "pushbkd-aacd9.appspot.com",
+    messagingSenderId: "622187287280",
+    appId: "1:622187287280:web:63a85cf11e1e6afa8d6835"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+  const messaging = firebase.messaging();
+  let token;
+  messaging.getToken().then((token)=>{
+      if(token){
+          console.log(token);
+          document.querySelector('#token').innerHTML = token;
+      }else{
+          console.log('tidak mendapatkan token');
+      }
+  }).catch((err)=>{
+      console.log('gagal '+err);
+  })
+
+  messaging.onMessage((payload) => {
+    console.log(payload);
+    document.querySelector('#pesan').innerHTML = JSON.stringify(payload);
+  });
+  
+</script>
+
+</body>
+</html>
